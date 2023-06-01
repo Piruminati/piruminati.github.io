@@ -1,0 +1,24 @@
+/* Regular font */
+@font-face {
+    font-family: pkmn-regular;
+    src: url(../../fonts/Pokemon_Classic.ttf);
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: pkmn-team;
+    src: url(../../fonts/Pokemon_Team.ttf);
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: pkmn-start;
+    src: url(../../fonts/pkmndp.ttf);
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}

@@ -1,0 +1,45 @@
+.animated {
+    display: inline-block;
+    width: 64px;
+    height: 64px;
+    animation: walking .7s step-end infinite;
+
+    &.bottom {
+        background-position-y: 0;
+    }
+    &.top {
+        background-position-y: calc(64px * 1);
+    }
+    &.right {
+        background-position-y: calc(64px * 2);
+    }
+    &.left {
+        background-position-y: calc(64px * 3);
+    }
+}
+
+@keyframes walking {
+    0% {
+        background-position-x: calc(64px * 0);
+    }
+
+    25% {
+        background-position-x: calc(64px * 1);
+    }
+
+    50% {
+        background-position-x: calc(64px * 2);
+    }
+
+    75% {
+        background-position-x: calc(64px * 3);
+    }
+
+    100% {
+        background-position-x: calc(64px * 0);
+    }
+}
+
+.sticker {
+    filter: drop-shadow(1px 1px #fff) drop-shadow(-1px -1px #fff) drop-shadow(-1px 1px #fff) drop-shadow(1px -1px #fff) drop-shadow(1px 1px rgba(0, 0, 0, 0.5));
+}

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pokémon Sprite Merger</title>
+    <link rel="stylesheet" href="scripts/css/styles.css">
+    <link rel="shortcut icon" href="images/icons/ico.png" type="image/png">
+</head>
+<body>
+    <div class="bodyContainer">
+        <div class="creatorGrid">
+            <div class="creatorGridColumn">
+                <div class="selectorContainer">
+                    <label for="genSelector">GENERATION STYLE:</label>
+                    <select class="js-genSelector" id="genSelector">
+                        <option value="3">GEN 3</option>
+                        <option value="4">GEN 4</option>
+                        <option value="5" selected>GEN 5</option>
+                    </select>
+                </div>
+            </div>
+            <div class="creatorGridColumn">
+                <div class="leftToolbox">
+                    <div class="bodyPart bodyPartGender gender_m sticker" data-part="gender"></div>
+                    <div class="bodyPart sticker" data-part="body" data-modal-title="Body"></div>
+                    <div class="bodyPart sticker" data-part="hair" data-modal-title="Hair"></div>
+                </div>
+                <div class="imagePreview">
+                    <img class="js-mainCanvas sticker" alt="Image preview">
+                </div>
+                <div class="rightToolbox">
+                    <div class="bodyPart sticker" data-part="shirt" data-modal-title="Shirt"></div>
+                    <div class="bodyPart sticker" data-part="pants" data-modal-title="Pants"></div>
+                    <div class="bodyPart sticker" data-part="shoes" data-modal-title="Shoes"></div>
+                </div> 
+            </div>
+            <div class="creatorGridColumn">
+                <div class="animatedToolbox">
+                    <span class="animated bottom sticker"></span>
+                    <span class="animated right sticker"></span>
+                    <span class="animated top sticker"></span>
+                    <span class="animated left sticker"></span>
+                </div>
+            </div>
+            <div class="creatorGridColumn">
+                <div class="bottomToolbox">
+                    <button class="toolboxButton js-randomButton">Random</button>
+                    <button class="toolboxButton success js-saveButton">Save</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal hidden">
+        <div class="modalTitle"></div>
+        <div class="modalBody"></div>
+        <div class="modalFooter">
+            <button class="toolboxButton danger js-closeModal">Close</button>
+            <button class="toolboxButton success js-applyModal">Apply</button>
+        </div>
+        <div class="modalPreview"></div>
+    </div>
+    
+
+
+
+
+
+    <script src="scripts/js/vendor/merge.js"></script>
+    <script src="scripts/js/script.js" type="module"></script>
+</body>
+</html>
