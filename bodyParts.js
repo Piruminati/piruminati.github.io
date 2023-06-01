@@ -2,7 +2,7 @@ const bodyParts = {
     'gender' : ['m', 'f'], //male, female
     'body' : {
         'gen3' : {
-            'm' : ['1'],
+            'm' : [],
             'f' : [],
         },
         'gen4' : {
