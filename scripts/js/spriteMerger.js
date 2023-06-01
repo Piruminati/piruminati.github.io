@@ -3,11 +3,6 @@ let imgPath = './images/bodyParts/';
 let bodyParts = {};
 let selectedBodyParts = {
     'gender': 'm',
-    'body': '',
-    'hair': '',
-    'pants': '',
-    'shirt': '',
-    'shoes': '',
 };
 let modal = document.querySelector('.modal');
 let animatedTrainers = document.querySelectorAll('.animatedToolbox .animated');
@@ -22,7 +17,7 @@ const randomValue = (dataList) => {
 
 const generateImage = (list = null, done = () => { }) => {
     let tempList = [];
-    let keys = ["body", "hair", "shirt", "pants"];
+    let keys = ["body", "hair", "shirt", "pants", "shoes"];
 
     Object.keys(list).forEach(element => {
         if (keys.includes(element)) {
@@ -43,10 +38,11 @@ const randomImageWithValues = () => {
     selectedBodyParts = {
         'gender': selectedBodyParts['gender'],
         'body': randomValue(bodyParts['body'][gens[activeGen]][selectedBodyParts['gender']]),
-        'hair': randomValue(bodyParts['hair'][gens[activeGen]][selectedBodyParts['gender']]),
         'pants': randomValue(bodyParts['pants'][gens[activeGen]][selectedBodyParts['gender']]),
         'shirt': randomValue(bodyParts['shirt'][gens[activeGen]][selectedBodyParts['gender']]),
-        'shoes': randomValue(bodyParts['shoes'][gens[activeGen]]),
+        'hair': randomValue(bodyParts['hair'][gens[activeGen]][selectedBodyParts['gender']]),
+        'shoes': randomValue(bodyParts['shoes'][gens[activeGen]][selectedBodyParts['gender']]),
+
     };
 
     generateImage(selectedBodyParts, (b64) => {
@@ -74,7 +70,7 @@ const buttonEvents = () => {
 
             const link = document.createElement('a');
             link.href = imageURL;
-            link.download = 'PokemonTrainer_' + Date.now();
+            link.download = 'pokemonNPC_' + Date.now();
             document.body.appendChild(link);
             link.click();
             document.body.removeChild(link);
