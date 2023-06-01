@@ -40,7 +40,7 @@ const bodyParts = {
             'f' : [],
         },
         'gen5' : {
-            'm' : ["1_amarillo", "1_azul", "1_blanco", "1_cyan", "1_gris", "1_marron", "1_naranja", "1_negro", "1_rojo", "1_rosa", "1_verde", "1_violeta","2_azul", "2_blanco", "2_cyan", "2_marron", "2_naranja", "2_negro", "2_rojo", "2_rosa", "2_amarillo", "2_verde", "2_violeta", "3_azul", "3_cyan", "3_marron", "3_naranja", "3_rojo", "3_verde", "3_violeta","4_azul", "4_blanco", "4_cyan", "4_gris", "4_marron", "4_naranja", "4_negro", "4_rojo", "4_rosa", "4_amarillo", "4_verde", "4_violeta"],
+            'm' : ["1_amarillo", "1_azul", "1_blanco", "1_cyan", "1_gris", "1_marron", "1_naranja", "1_negro", "1_rojo", "1_rosa", "1_verde", "1_violeta","2_azul", "2_blanco", "2_cyan", "2_marron", "2_naranja", "2_negro", "2_rojo", "2_amarillo", "2_verde", "2_violeta", "3_azul", "3_cyan", "3_marron", "3_naranja", "3_rojo", "3_verde", "3_violeta","4_azul", "4_blanco", "4_cyan", "4_gris", "4_marron", "4_naranja", "4_negro", "4_rojo", "4_rosa", "4_amarillo", "4_verde", "4_violeta"],
             'f' : [],
         }
     },
