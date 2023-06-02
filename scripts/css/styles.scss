@@ -29,6 +29,8 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+    z-index: 10;
+    position: relative;
 
     //mobile scaling
     @media screen and (max-width: 600px) {
@@ -233,6 +235,7 @@ body {
     transition: .5s ease all;
     transform: scaleX(0);
     max-height: 0px;
+    z-index: 20;
 
     &.visible {
         max-height: 4000px;
