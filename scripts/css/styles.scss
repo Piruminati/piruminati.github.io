@@ -35,7 +35,6 @@ body {
         display: flex;
         flex-direction: column;
         justify-content: center;
-        //height: 256px;
         z-index: 5;
 
         //mobile scaling
@@ -333,5 +332,32 @@ body {
         color: #fff;
         text-decoration: underline;
         text-transform: uppercase;
+    }
+}
+
+.paypal {
+    position: fixed;
+    top: 24px;
+    right: 24px;
+    background-color: #ffc439;
+    border-radius: 4px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 8px 12px;
+    width: 200px;
+    transition: .05s ease all;
+
+    @media screen and (max-width: 600px) {
+        left: 24px;
+        width: calc(100% - 48px);
+    }
+    
+    &:hover {
+        transform: scale(1.1);
+    }
+
+    img {
+        width: 60px;
     }
 }
