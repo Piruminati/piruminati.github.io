@@ -29,37 +29,37 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    z-index: 10;
     position: relative;
-
-    //mobile scaling
-    @media screen and (max-width: 600px) {
-        transform: scale(.9);
-    }
-
-    @media screen and (max-width: 400px) {
-        transform: scale(.8);
-    }
-
-    @media screen and (max-width: 360px) {
-        transform: scale(.7);
-    }
-
-    @media screen and (max-width: 300px) {
-        transform: scale(.6);
-    }
 
     .creatorGrid {
         display: flex;
         flex-direction: column;
         justify-content: center;
-        height: 100%;
+        //height: 256px;
+        z-index: 5;
+
+        //mobile scaling
+        @media screen and (max-width: 600px) {
+            transform: scale(.9);
+        }
+
+        @media screen and (max-width: 400px) {
+            transform: scale(.8);
+        }
+
+        @media screen and (max-width: 360px) {
+            transform: scale(.7);
+        }
+
+        @media screen and (max-width: 300px) {
+            transform: scale(.6);
+        }
 
         .leftToolbox,
         .rightToolbox {
             //styles for toolbox
             width: 80px;
-            height: 100%;
+            height: 256px;
 
             .bodyPart {
                 padding: 12px;
@@ -152,6 +152,7 @@ body {
             justify-content: center;
             align-items: center;
             width: 100%;
+            z-index: 10;
 
             .selectorContainer {
                 display: flex;
@@ -320,7 +321,7 @@ body {
 }
 
 .credits {
-    position: absolute;
+    position: fixed;
     bottom: 24px;
     right: 24px;
     color: #fff;
