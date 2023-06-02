@@ -315,3 +315,19 @@ body {
         box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.2);
     }
 }
+
+.credits {
+    position: absolute;
+    bottom: 24px;
+    right: 24px;
+    color: #fff;
+    font-size: 20px;
+    line-height: 22px;
+    text-align: right;
+
+    a {
+        color: #fff;
+        text-decoration: underline;
+        text-transform: uppercase;
+    }
+}
