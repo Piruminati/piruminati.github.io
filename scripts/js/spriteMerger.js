@@ -70,7 +70,7 @@ const buttonEvents = () => {
 
             const link = document.createElement('a');
             link.href = imageURL;
-            link.download = 'pokemonNPC_' + Date.now();
+            link.download = 'PokemonTrainer_' + Date.now();
             document.body.appendChild(link);
             link.click();
             document.body.removeChild(link);
