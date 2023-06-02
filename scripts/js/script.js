@@ -2,9 +2,7 @@ import * as bodyScript from './spriteMerger.js';
 import * as body from './../../bodyParts.js';
 
 let bodyScriptLoading = {};
-bodyScriptLoading.doReady = () => {
-    console.log(body.bodyParts);
-    
+bodyScriptLoading.doReady = () => {    
     bodyScript.init(body.bodyParts);
 }
 
