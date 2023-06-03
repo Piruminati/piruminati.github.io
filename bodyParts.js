@@ -26,7 +26,7 @@ const bodyParts = {
             'f' : [],
         },
         'gen5' : {
-            'm' : ["1_azul", "1_blanco", "1_cyan", "1_gris", "1_marron", "1_naranja", "1_negro", "1_rojo", "1_rosa", "1_amarillo", "1_verde", "1_violeta", "2_azul", "2_blanco", "2_cyan", "2_gris", "2_marron", "2_naranja", "2_negro", "2_rojo", "2_rosa", "2_amarillo", "2_verde", "2_violeta", "3_azul", "3_blanco", "3_cyan", "3_gris", "3_marron", "3_naranja", "3_negro", "3_rojo", "3_rosa", "3_amarillo", "3_verde", "3_violeta", "20_brendan_1","20_brendan_2","20_brendan_3","19_gorra_1","19_gorra_2","19_gorra_3","19_gorra_4","19_gorra_5","19_gorra_6",],
+            'm' : ["1_azul", "1_blanco", "1_cyan", "1_gris", "1_marron", "1_naranja", "1_negro", "1_rojo", "1_rosa", "1_amarillo", "1_verde", "1_violeta", "2_azul", "2_blanco", "2_cyan", "2_gris", "2_marron", "2_naranja", "2_negro", "2_rojo", "2_rosa", "2_amarillo", "2_verde", "2_violeta", "3_azul", "3_blanco", "3_cyan", "3_gris", "3_marron", "3_naranja", "3_negro", "3_rojo", "3_rosa", "3_amarillo", "3_verde", "3_violeta","4_azul", "4_blanco", "4_cyan", "4_gris", "4_marron", "4_naranja", "4_negro", "4_rojo", "4_rosa", "4_amarillo", "4_verde", "4_violeta","5_azul", "5_blanco", "5_cyan", "5_gris", "5_marron", "5_naranja", "5_negro", "5_rojo", "5_rosa", "5_amarillo", "5_verde", "5_violeta", "6_azul", "6_blanco", "6_cyan", "6_gris", "6_marron", "6_naranja", "6_negro", "6_rojo", "6_rosa", "6_amarillo", "6_verde", "6_violeta", "20_brendan_1","20_brendan_2","20_brendan_3","19_gorra_1","19_gorra_2","19_gorra_3","19_gorra_4","19_gorra_5","19_gorra_6",],
             'f' : [],
         }
     },
