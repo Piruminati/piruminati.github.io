@@ -227,7 +227,7 @@ const scrollLoadingEvent = () => {
 
         activeModalBodyParts.forEach(box => {
             if (box['element'].dataset.loaded == undefined) {
-                let elementVisible = (box['element'].getBoundingClientRect().top - 90) <= modalBody.offsetHeight;
+                let elementVisible = (box['element'].getBoundingClientRect().top - 120) <= modalBody.offsetHeight;
 
                 if (elementVisible) {
                     generateImage(box['data'], (b64) => {
