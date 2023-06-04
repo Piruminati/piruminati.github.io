@@ -10,6 +10,9 @@ let gens = [
     "gen3", "gen4", "gen5"
 ];
 let activeGen = 2;
+let activeModalBodyParts = [];
+let modalBody = null;
+let scrollTimeout = null;
 
 const randomValue = (dataList) => {
     return dataList[Math.floor(Math.random() * dataList.length)];
@@ -21,7 +24,7 @@ const generateImage = (list = null, done = () => { }) => {
 
     Object.keys(list).forEach(element => {
         if (keys.includes(element)) {
-            if(list[element] !== "") {
+            if (list[element] !== "") {
                 tempList.push(imgPath + element + "/" + gens[activeGen] + "/" + list[element] + ".png");
             }
         }
@@ -147,19 +150,19 @@ const buttonEvents = () => {
 const openModal = (title = '', key = '', contentList = []) => {
     if (modal !== null) {
         let modalTitle = modal.querySelector('.modalTitle');
-        let modalBody = modal.querySelector('.modalBody');
+        modalBody = modal.querySelector('.modalBody');
         let clickedElement = [];
 
         //set content
         modalTitle.innerHTML = title;
         modalBody.innerHTML = "";
 
-        if(["hair", "shirt", "shoes", "pants"].includes(key)) {
+        if (["hair", "shirt", "shoes", "pants"].includes(key)) {
             contentList.unshift(""); //ADD EMPTY VARIATION, FOR NOT WEARING A PART
         }
 
         contentList.forEach(element => {
-            let tempBodyParts = {...selectedBodyParts}; //direct copy will also change selectedBodyPart, and we dont want that
+            let tempBodyParts = { ...selectedBodyParts }; //direct copy will also change selectedBodyPart, and we dont want that
             let div = document.createElement('div');
             div.classList.add('bodyPartOption');
             if (element == "") div.classList.add('removePart');
@@ -173,20 +176,22 @@ const openModal = (title = '', key = '', contentList = []) => {
             Object.keys(tempBodyParts).forEach(item => {
                 if (item == key) {
                     tempBodyParts[item] = element;
+                    return;
                 }
             });
 
-            if(tempBodyParts[key] == selectedBodyParts[key]) {
+            if (tempBodyParts[key] == selectedBodyParts[key]) {
                 div.classList.add('active');
                 clickedElement.push(div);
             }
 
-            generateImage(tempBodyParts, (b64) => {
-                span.style.backgroundImage = 'url(' + b64 + ')';
-            });
-
             //paste div into modal
             modalBody.appendChild(div);
+
+            activeModalBodyParts.push({
+                "element": div,
+                "data": tempBodyParts
+            });
 
             div.addEventListener('click', () => {
                 clickedElement.forEach(element => {
@@ -202,8 +207,44 @@ const openModal = (title = '', key = '', contentList = []) => {
         modal.classList.remove('hidden');
         setTimeout(() => {
             modal.classList.add('visible');
+
+            setTimeout(() => {
+                //generate first images and reset modalBody scroll position
+                modalBody.scrollTo(0, 0);
+                scrollLoadingEvent();
+            }, 200);
         }, 100);
+
+
+        modalBody.removeEventListener('scroll', scrollLoadingEvent);
+        modalBody.addEventListener('scroll', scrollLoadingEvent);
     }
+}
+
+const scrollLoadingEvent = () => {
+    clearTimeout(scrollTimeout);
+    scrollTimeout = setTimeout(() => {
+
+        activeModalBodyParts.forEach(box => {
+            if (box['element'].dataset.loaded == undefined) {
+                let elementVisible = (box['element'].getBoundingClientRect().top - 90) <= modalBody.offsetHeight;
+
+                if (elementVisible) {
+                    generateImage(box['data'], (b64) => {
+                        let span = box['element'].firstElementChild;
+                        span.style.backgroundImage = 'url(' + b64 + ')';
+                        box['element'].dataset.loaded = true;
+
+                        let found = activeModalBodyParts.find(item => item['element'] == box['element']);
+                        if (found) {
+                            let index = activeModalBodyParts.indexOf(found);
+                            activeModalBodyParts.splice(index, 1);
+                        }
+                    });
+                }
+            }
+        });
+    }, 10);
 }
 
 const closeModal = () => {
