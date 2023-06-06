@@ -181,10 +181,16 @@ const openModal = (title = '', key = '', contentList = []) => {
             if (element == "") div.classList.add('removePart');
             div.dataset.key = key;
             div.dataset.part = element;
+            div.dataset.loaded = false;
+
+            let loading = document.createElement('div');
+            loading.classList.add('loading');
 
             let span = document.createElement('span');
             span.classList.add('animated', 'bottom', 'sticker');
             div.appendChild(span);
+            div.appendChild(loading);
+            
             modalBody.appendChild(div);
 
             activeModalBodyParts.push(div);

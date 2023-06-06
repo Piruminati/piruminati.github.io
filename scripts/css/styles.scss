@@ -314,6 +314,57 @@ body {
                     background-image: url('data:image/svg+xml,<svg width="10" height="10" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg%22%3E<path fill-rule="evenodd" clip-rule="evenodd" d="M4.57676 5L0 0.423237L0.423237 0L5 4.57676L9.57676 0L10 0.423237L5.42324 5L10 9.57676L9.57676 10L5 5.42324L0.423237 10L0 9.57676L4.57676 5Z" fill="%23fff"/></svg>');
                 }
             }
+
+            &[data-loaded=false] {
+                .loading {
+                    animation: animate 1.5s linear infinite;
+                    clip: rect(0, 40px, 40px, 20px);
+                    height: 40px;
+                    width: 40px;
+                    position: absolute;
+
+                    &:before {
+                        animation: animate2 1.5s ease-in-out infinite;
+                        clip: rect(0, 40px, 40px, 20px);
+                        content: "";
+                        border-radius: 50%;
+                        height: 40px;
+                        width: 40px;
+                        position: absolute;
+                        left: 0;
+                        right: 0;
+                        top: 0;
+                        bottom: 0;
+                    }
+
+                    @keyframes animate2 {
+                        0% {
+                            box-shadow: inset #fff 0 0 0 5px;
+                            transform: rotate(-140deg);
+                        }
+
+                        50% {
+                            box-shadow: inset #fff 0 0 0 2px;
+                        }
+
+                        100% {
+                            box-shadow: inset #fff 0 0 0 5px;
+                            transform: rotate(140deg);
+                        }
+                    }
+
+                    @keyframes animate {
+                        0% {
+                            transform: rotate(0deg);
+                        }
+
+                        100% {
+                            transform: rotate(220deg);
+                        }
+                    }
+                }
+
+            }
         }
     }
 
@@ -361,7 +412,7 @@ body {
         left: 24px;
         width: calc(100% - 48px);
     }
-    
+
     &:hover {
         transform: scale(1.1);
     }
