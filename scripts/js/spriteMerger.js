@@ -190,12 +190,12 @@ const openModal = (title = '', key = '', contentList = []) => {
             span.classList.add('animated', 'bottom', 'sticker');
             div.appendChild(span);
             div.appendChild(loading);
-            
+
             modalBody.appendChild(div);
 
             activeModalBodyParts.push(div);
 
-            if (index <= indexPreLoad) {
+            if (index < indexPreLoad) {
                 orderedLoading(contentList, key, index);
             }
         });
