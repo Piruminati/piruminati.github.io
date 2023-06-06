@@ -12,7 +12,8 @@ let gens = [
 let activeGen = 2;
 let activeModalBodyParts = [];
 let modalBody = null;
-let scrollTimeout = null;
+let clickedElement = [];
+let randomButton = null;
 
 const randomValue = (dataList) => {
     return dataList[Math.floor(Math.random() * dataList.length)];
@@ -45,10 +46,10 @@ const randomImageWithValues = () => {
         'shirt': randomValue(bodyParts['shirt'][gens[activeGen]][selectedBodyParts['gender']]),
         'hair': randomValue(bodyParts['hair'][gens[activeGen]][selectedBodyParts['gender']]),
         'shoes': randomValue(bodyParts['shoes'][gens[activeGen]][selectedBodyParts['gender']]),
-
     };
 
     generateImage(selectedBodyParts, (b64) => {
+        randomButton.disabled = false;
         canvas.src = b64;
 
         animatedTrainers.forEach(element => {
@@ -59,10 +60,11 @@ const randomImageWithValues = () => {
 
 const buttonEvents = () => {
     let saveButton = document.querySelector('.js-saveButton'),
-        randomButton = document.querySelector('.js-randomButton'),
         closeModalButton = modal.querySelector('.js-closeModal'),
         applyModalButton = modal.querySelector('.js-applyModal'),
-        genSelector = document.querySelector('.js-genSelector')
+        genSelector = document.querySelector('.js-genSelector');
+
+    randomButton = document.querySelector('.js-randomButton')
 
     //Save image
     if (saveButton !== null && canvas !== null) {
@@ -82,6 +84,8 @@ const buttonEvents = () => {
     //Random character
     if (randomButton !== null) {
         randomButton.addEventListener('click', () => {
+            randomButton.disabled = true;
+
             randomImageWithValues();
         });
     }
@@ -151,7 +155,8 @@ const openModal = (title = '', key = '', contentList = []) => {
     if (modal !== null) {
         let modalTitle = modal.querySelector('.modalTitle');
         modalBody = modal.querySelector('.modalBody');
-        let clickedElement = [];
+        clickedElement = [];
+        activeModalBodyParts = [];
 
         //set content
         modalTitle.innerHTML = title;
@@ -162,7 +167,6 @@ const openModal = (title = '', key = '', contentList = []) => {
         }
 
         contentList.forEach(element => {
-            let tempBodyParts = { ...selectedBodyParts }; //direct copy will also change selectedBodyPart, and we dont want that
             let div = document.createElement('div');
             div.classList.add('bodyPartOption');
             if (element == "") div.classList.add('removePart');
@@ -173,83 +177,63 @@ const openModal = (title = '', key = '', contentList = []) => {
             span.classList.add('animated', 'bottom', 'sticker');
             div.appendChild(span);
 
-            Object.keys(tempBodyParts).forEach(item => {
-                if (item == key) {
-                    tempBodyParts[item] = element;
-                    return;
-                }
-            });
-
-            if (tempBodyParts[key] == selectedBodyParts[key]) {
-                div.classList.add('active');
-                clickedElement.push(div);
-            }
+            activeModalBodyParts.push(div);
 
             //paste div into modal
             modalBody.appendChild(div);
-
-            activeModalBodyParts.push({
-                "element": div,
-                "data": tempBodyParts
-            });
-
-            div.addEventListener('click', () => {
-                clickedElement.forEach(element => {
-                    element.classList.remove('active');
-                });
-
-                clickedElement.push(div);
-                div.classList.add('active');
-            });
         });
+
+        orderedLoading(contentList, key);
 
         //open modal
         modal.classList.remove('hidden');
         setTimeout(() => {
             modal.classList.add('visible');
-
-            setTimeout(() => {
-                //generate first images and reset modalBody scroll position
-                modalBody.scrollTo(0, 0);
-                scrollLoadingEvent();
-            }, 200);
         }, 100);
-
-
-        modalBody.removeEventListener('scroll', scrollLoadingEvent);
-        modalBody.addEventListener('scroll', scrollLoadingEvent);
     }
 }
 
-const scrollLoadingEvent = () => {
-    clearTimeout(scrollTimeout);
-    scrollTimeout = setTimeout(() => {
+const orderedLoading = (contentList, key, index = 0) => {
+    let element = contentList[index];
+    let tempBodyParts = { ...selectedBodyParts }; //direct copy will also change selectedBodyPart, and we dont want that
+    let div = activeModalBodyParts[index],
+        span = div.firstElementChild;
 
-        activeModalBodyParts.forEach(box => {
-            if (box['element'].dataset.loaded == undefined) {
-                let elementVisible = (box['element'].getBoundingClientRect().top - 120) <= modalBody.offsetHeight;
+    Object.keys(tempBodyParts).forEach(item => {
+        if (item == key) {
+            tempBodyParts[item] = element;
+            return;
+        }
+    });
 
-                if (elementVisible) {
-                    generateImage(box['data'], (b64) => {
-                        let span = box['element'].firstElementChild;
-                        span.style.backgroundImage = 'url(' + b64 + ')';
-                        box['element'].dataset.loaded = true;
+    if (tempBodyParts[key] == selectedBodyParts[key]) {
+        div.classList.add('active');
+        clickedElement.push(div);
+    }
 
-                        let found = activeModalBodyParts.find(item => item['element'] == box['element']);
-                        if (found) {
-                            let index = activeModalBodyParts.indexOf(found);
-                            activeModalBodyParts.splice(index, 1);
-                        }
-                    });
-                }
-            }
+    div.addEventListener('click', () => {
+        clickedElement.forEach(element => {
+            element.classList.remove('active');
         });
-    }, 10);
+
+        clickedElement.push(div);
+        div.classList.add('active');
+    });
+
+    generateImage(tempBodyParts, (b64) => {
+        span.style.backgroundImage = 'url(' + b64 + ')';
+        div.dataset.loaded = true;
+
+        if (contentList[index + 1] !== undefined) {
+            orderedLoading(contentList, key, index + 1);
+        }
+    });
 }
 
 const closeModal = () => {
     if (modal !== null) {
         modal.classList.remove('visible');
+        modalBody.scrollTo(0, 0);
 
         setTimeout(() => {
             modal.classList.add('hidden');
