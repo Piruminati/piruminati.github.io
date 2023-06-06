@@ -162,7 +162,7 @@ const buttonEvents = () => {
 const openModal = (title = '', key = '', contentList = []) => {
     if (modal !== null) {
         let modalTitle = modal.querySelector('.modalTitle');
-        let indexPreLoad = isMobile ? 10 : 40;
+        let indexPreLoad = isMobile ? 20 : 60;
         modalBody = modal.querySelector('.modalBody');
         clickedElement = [];
         activeModalBodyParts = [];
