@@ -162,7 +162,6 @@ const buttonEvents = () => {
 const openModal = (title = '', key = '', contentList = []) => {
     if (modal !== null) {
         let modalTitle = modal.querySelector('.modalTitle');
-        let indexPreLoad = isMobile ? 20 : 60;
         modalBody = modal.querySelector('.modalBody');
         clickedElement = [];
         activeModalBodyParts = [];
@@ -195,12 +194,22 @@ const openModal = (title = '', key = '', contentList = []) => {
 
             activeModalBodyParts.push(div);
 
-            if (index < indexPreLoad) {
-                orderedLoading(contentList, key, index);
+            if (element == selectedBodyParts[key]) {
+                div.classList.add('active');
+                clickedElement.push(div);
             }
+
+            div.addEventListener('click', () => {
+                clickedElement.forEach(element => {
+                    element.classList.remove('active');
+                });
+        
+                clickedElement.push(div);
+                div.classList.add('active');
+            });
         });
 
-        orderedLoading(contentList, key, indexPreLoad);
+        rowLoading(contentList, key, modal, [...modal.querySelectorAll('.bodyPartOption')]);
 
         //Open modal
         modal.classList.remove('hidden');
@@ -210,42 +219,37 @@ const openModal = (title = '', key = '', contentList = []) => {
     }
 }
 
-const orderedLoading = (contentList, key, index = 0) => {
-    let element = contentList[index];
-    if (element == undefined || stopPropagation) return;
-
+const rowLoading = (contentList, key, modal, allElements) => {
+    if (stopPropagation) return;
+    
+    let allElementsNotLoaded = [...modal.querySelectorAll('[data-loaded=false]')];
+    let elementsToLoad = isMobile ? 6 : 12;
+    let actualLoadingIndex = 0;
+    let elementsToLoop = allElementsNotLoaded.slice(0, elementsToLoad);
     let tempBodyParts = { ...selectedBodyParts }; //Direct copy will also change selectedBodyPart, and we dont want that
-    let div = activeModalBodyParts[index],
-        span = div.firstElementChild;
+    
+    elementsToLoop.forEach(box => {
+        let index = allElements.indexOf(box);
 
-    Object.keys(tempBodyParts).forEach(item => {
-        if (item == key) {
-            tempBodyParts[item] = element;
-            return;
-        }
-    });
-
-    if (tempBodyParts[key] == selectedBodyParts[key]) {
-        div.classList.add('active');
-        clickedElement.push(div);
-    }
-
-    div.addEventListener('click', () => {
-        clickedElement.forEach(element => {
-            element.classList.remove('active');
+        Object.keys(tempBodyParts).forEach(item => {
+            if (item == key) {
+                tempBodyParts[item] = contentList[index];
+                return;
+            }
         });
 
-        clickedElement.push(div);
-        div.classList.add('active');
-    });
+        generateImage(tempBodyParts, (b64) => {
+            box.querySelector('span').style.backgroundImage = 'url(' + b64 + ')';
+            box.dataset.loaded = true;
 
-    generateImage(tempBodyParts, (b64) => {
-        span.style.backgroundImage = 'url(' + b64 + ')';
-        div.dataset.loaded = true;
-
-        if (contentList[index + 1] !== undefined) {
-            orderedLoading(contentList, key, index + 1);
-        }
+            if(actualLoadingIndex + 1 < elementsToLoad) {
+                actualLoadingIndex++;
+            } else {
+                setTimeout(() => {
+                    rowLoading(contentList, key, modal, allElements);
+                }, 100);
+            }
+        });
     });
 }
 
