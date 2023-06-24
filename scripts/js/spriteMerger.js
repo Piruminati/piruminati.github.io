@@ -223,7 +223,7 @@ const rowLoading = (contentList, key, modal, allElements) => {
     if (stopPropagation) return;
     
     let allElementsNotLoaded = [...modal.querySelectorAll('[data-loaded=false]')];
-    let elementsToLoad = isMobile ? 6 : 12;
+    let elementsToLoad = isMobile ? 12 : 24;
     let actualLoadingIndex = 0;
     let elementsToLoop = allElementsNotLoaded.slice(0, elementsToLoad);
     let tempBodyParts = { ...selectedBodyParts }; //Direct copy will also change selectedBodyPart, and we dont want that
