@@ -12,8 +12,8 @@ const bodyParts = {
             'f' : [],
         },
         'gen5' : {
-            'm' : ['m_tono_1', 'm_tono_2', 'm_tono_3', 'm_tono_4'],
-            'f' : ['f_tono_1', 'f_tono_2', 'f_tono_3', 'f_tono_4'],
+            'm' : ['m_tono_1', 'm_tono_2', 'm_tono_3', 'm_tono_4', 'm_tono_5'],
+            'f' : ['f_tono_1', 'f_tono_2', 'f_tono_3', 'f_tono_4', 'f_tono_5'],
         }
     },
     'hair' : {
