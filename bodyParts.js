@@ -41,7 +41,7 @@ const bodyParts = {
         },
         'gen5' : {
             'm' : ["1_amarillo", "1_azul", "1_blanco", "1_cyan", "1_gris", "1_marron", "1_naranja", "1_negro", "1_rojo", "1_rosa", "1_verde", "1_violeta","2_azul", "2_blanco", "2_cyan", "2_marron", "2_naranja", "2_negro", "2_rojo", "2_amarillo", "2_verde", "2_violeta", "3_azul", "3_cyan", "3_marron", "3_naranja", "3_rojo", "3_verde", "3_violeta","4_azul", "4_blanco", "4_cyan", "4_gris", "4_marron", "4_naranja", "4_negro", "4_rojo", "4_rosa", "4_amarillo", "4_verde", "4_violeta","5_azul", "5_blanco", "5_gris", "5_naranja", "5_negro", "5_rojo", "5_rosa", "5_amarillo", "5_verde", "5_violeta", "6_verde", "6_violeta", "6_negro", "6_azul", "6_blanco" , "6_naranja"],
-            'f' : ["99_azul", "99_blanco", "99_cyan", "99_gris", "99_marron", "99_naranja", "99_negro", "99_rojo", "99_rosa", "99_amarillo", "99_verde", "99_violeta","98_azul", "98_blanco", "98_cyan", "98_gris", "98_marron", "98_naranja", "98_negro", "98_rojo", "98_rosa", "98_amarillo", "98_verde", "98_violeta"],
+            'f' : ["99_azul", "99_blanco", "99_cyan", "99_gris", "99_marron", "99_naranja", "99_negro", "99_rojo", "99_rosa", "99_amarillo", "99_verde", "99_violeta","98_azul", "98_blanco", "98_cyan", "98_gris", "98_marron", "98_naranja", "98_negro", "98_rojo", "98_rosa", "98_amarillo", "98_verde", "98_violeta","95_azul", "95_cyan", "95_gris", "95_naranja", "95_rojo", "95_rosa", "95_verde", "95_violeta",],
         }
     },
     'pants' : {
