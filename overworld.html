@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pokémon Trainer Creator</title>
+    <link rel="stylesheet" href="scripts/css/styles.css">
+    <link rel="shortcut icon" href="images/icons/ico.png" type="image/png">
+
+    <!-- twitter card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@Piruminatweet">
+    <meta name="twitter:creator" content="@JellyMudkip">
+    <meta name="twitter:image" content="https://piruminati.github.io/images/thumbnail.png" />
+    <meta name="twitter:title" content="Pokémon Trainer Creator">
+    <meta name="twitter:description" content="Pokémon Trainer Creator is an online free trainer generator for your Pokémon games! Try it out!">
+    <meta name="twitter:alt" content="In the image we can see a banner with 5 Pokémon Trainers, a text with the title 'Infinite Sprite Creator' and a button with the text 'Try it now!'">
+    
+    <meta property="og:url" content="https://piruminati.github.io" />
+    <meta property="og:title" content="Infinite Sprite Creator" />
+    <meta property="og:description" content="Pokémon Trainer Creator is an online free trainer generator for your Pokémon games! Try it out!" />
+
+    <!-- seo -->
+    <meta name="description" content="Pokémon Trainer Creator is an online free trainer generator for your Pokémon games! Try it out!">
+    <meta name="keywords" content="Pokémon, Sprite generator">
+    <meta name="author" content="Piruminatweet">
+    <link rel="canonical" href="https://piruminati.github.io" />
+</head>
+
+<body>
+    <div class="bodyContainer">
+        <div class="creatorGrid">
+            <div class="creatorGridColumn" style="display:none;">
+                <div class="selectorContainer">
+                    <label for="genSelector">GENERATION STYLE:</label>
+                    <select class="js-genSelector" id="genSelector">
+                        <option value="3">GEN 3</option>
+                        <option value="4">GEN 4</option>
+                        <option value="5" selected>GEN 5</option>
+                    </select>
+                </div>
+            </div>
+            <div class="creatorGridColumn">
+                <div class="leftToolbox">
+                    <div class="bodyPart bodyPartGender gender_m sticker" data-part="gender"></div>
+                    <div class="bodyPart sticker" data-part="body" data-modal-title="Body"></div>
+                    <div class="bodyPart sticker" data-part="hair" data-modal-title="Hair"></div>
+                </div>
+                <div class="imagePreview">
+                    <img class="js-mainCanvas sticker" alt="Image preview">
+                </div>
+                <div class="rightToolbox">
+                    <div class="bodyPart sticker" data-part="shirt" data-modal-title="Shirt"></div>
+                    <div class="bodyPart sticker" data-part="pants" data-modal-title="Pants"></div>
+                    <div class="bodyPart sticker" data-part="shoes" data-modal-title="Shoes"></div>
+                </div>
+            </div>
+            <div class="creatorGridColumn">
+                <div class="animatedToolbox">
+                    <span class="animated bottom sticker"></span>
+                    <span class="animated right sticker"></span>
+                    <span class="animated top sticker"></span>
+                    <span class="animated left sticker"></span>
+                </div>
+            </div>
+            <div class="creatorGridColumn">
+                <div class="bottomToolbox">
+                    <button class="toolboxButton js-randomButton">Random</button>
+                    <button class="toolboxButton success js-saveButton">Save image</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal hidden">
+        <div class="modalTitle"></div>
+        <div class="modalBody"></div>
+        <div class="modalFooter">
+            <button class="toolboxButton danger js-closeModal">Close</button>
+            <button class="toolboxButton success js-applyModal">Apply</button>
+        </div>
+        <div class="modalPreview"></div>
+    </div>
+
+    <div class="credits">
+        <p>
+            Pokémon Trainer Creator v1.0
+        </p>
+        <p>
+            Sprites by <a href="https://www.youtube.com/c/Piruminati" target="_blank">Piruminati</a> - Developed by <a
+                href="https://twitter.com/JellyMudkip" target="_blank">JellyMudkip</a>
+        </p>
+    </div>
+
+    <a class="paypal" href="https://www.paypal.com/paypalme/PiruJimenez" target="_blank">
+        <img src="images/icons/paypal.svg" alt="Support the project with a donation"
+            title="Support the project with a donation" width="60" height="19">
+    </a>
+
+    <script src="scripts/js/vendor/merge.js"></script>
+    <script src="scripts/js/script.js" type="module"></script>
+</body>
+
+</html>

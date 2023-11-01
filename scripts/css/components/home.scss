@@ -1,0 +1,163 @@
+.homeContainer {
+    max-width: 1024px;
+    margin: auto;
+    color: #fff;
+    padding: 0 24px;
+
+    * {
+        font-family: pkmn-start;
+    }
+
+    h1,
+    h2 {
+        display: none;
+    }
+
+    .banner {
+        position: relative;
+        background-size: contain;
+        background-position: center;
+        background-repeat: no-repeat;
+        height: 150px;
+
+        @media screen and (min-width: 767px) {
+            height: 200px;
+            background-position: top center;
+
+            background-size: 580px;
+        }
+
+        .logoImg {
+            position: absolute;
+            left: 0;
+            right: 0;
+            margin: auto;
+            bottom: -90px;
+            width: 350px;
+
+            @media screen and (min-width: 767px) {
+                bottom: -100px;
+            }
+        }
+    }
+
+    .projectDescription {
+        margin: 80px 0 64px;
+
+        @media screen and (min-width: 767px) {
+            margin: 48px 0;
+            margin: 80px 0 48px;
+        }
+
+        p {
+            margin-bottom: 24px;
+            font-size: 16px;
+            line-height: 18px;
+
+            &.title {
+                margin-bottom: 8px;
+                font-size: 22px;
+                line-height: 24px;
+            }
+
+            &:last-child {
+                margin-bottom: 0;
+            }
+        }
+    }
+
+    .projectsGrid {
+        display: grid;
+        grid-template-columns: repeat(1, 1fr);
+        grid-gap: 32px;
+
+        @media screen and (min-width: 767px) {
+            grid-template-columns: repeat(3, 1fr);
+        }
+
+        .gridElement {
+            max-width: 450px;
+            margin: 0 auto;
+            width: 100%;
+            margin-bottom: 24px;
+
+            h3 {
+                text-align: center;
+                margin-bottom: 16px;
+                font-size: 26px;
+                line-height: 28px;
+
+                @media screen and (min-width: 767px) {
+                    font-size: 22px;
+                    line-height: 24px;    
+                }
+
+                a, a:visited {
+                    color: #fff;
+                    text-decoration: unset;
+                }
+            }
+
+            img {
+                display: block;
+                width: 100%;
+                border-radius: 6px;
+                margin: auto;
+                margin-bottom: 16px;
+                transition: .15s ease-in-out;
+                cursor: pointer;
+
+                @media screen and (min-width: 767px) {
+                    &:hover {
+                        transform: scale(1.05);
+                        border-color: #fff;
+                    }    
+                }
+        
+            }
+
+            .description {
+                margin-bottom: 24px;
+
+                p {
+                    font-size: 18px;
+                    line-height: 20px;
+                    margin-bottom: 12px;
+                }
+            }
+
+            .button {
+                color: #fff;
+                width: 100%;
+                display: block;
+                text-align: center;
+                background-color: #1662c4;
+                padding: 8px 12px;
+                font-size: 24px;
+                line-height: 26px;
+                text-decoration: unset;
+                text-transform: uppercase;
+                cursor: pointer;
+                border-radius: 4px;
+
+                &:hover {
+                    background-color: #2473d9;
+                }
+            }
+        }
+    }
+}
+
+.credits {
+    padding: 0 0 24px;
+    text-align: center;
+    position: unset;
+
+    p {
+        margin-bottom: 12px;
+
+        &:last-child {
+            margin-bottom: 0;
+        }
+    }
+}

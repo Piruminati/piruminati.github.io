@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pokémon Trainer Creator</title>
+    <title>Home - Pokémon Trainer Creator</title>
     <link rel="stylesheet" href="scripts/css/styles.css">
     <link rel="shortcut icon" href="images/icons/ico.png" type="image/png">
 
@@ -30,58 +30,59 @@
 </head>
 
 <body>
-    <div class="bodyContainer">
-        <div class="creatorGrid">
-            <div class="creatorGridColumn" style="display:none;">
-                <div class="selectorContainer">
-                    <label for="genSelector">GENERATION STYLE:</label>
-                    <select class="js-genSelector" id="genSelector">
-                        <option value="3">GEN 3</option>
-                        <option value="4">GEN 4</option>
-                        <option value="5" selected>GEN 5</option>
-                    </select>
-                </div>
-            </div>
-            <div class="creatorGridColumn">
-                <div class="leftToolbox">
-                    <div class="bodyPart bodyPartGender gender_m sticker" data-part="gender"></div>
-                    <div class="bodyPart sticker" data-part="body" data-modal-title="Body"></div>
-                    <div class="bodyPart sticker" data-part="hair" data-modal-title="Hair"></div>
-                </div>
-                <div class="imagePreview">
-                    <img class="js-mainCanvas sticker" alt="Image preview">
-                </div>
-                <div class="rightToolbox">
-                    <div class="bodyPart sticker" data-part="shirt" data-modal-title="Shirt"></div>
-                    <div class="bodyPart sticker" data-part="pants" data-modal-title="Pants"></div>
-                    <div class="bodyPart sticker" data-part="shoes" data-modal-title="Shoes"></div>
-                </div>
-            </div>
-            <div class="creatorGridColumn">
-                <div class="animatedToolbox">
-                    <span class="animated bottom sticker"></span>
-                    <span class="animated right sticker"></span>
-                    <span class="animated top sticker"></span>
-                    <span class="animated left sticker"></span>
-                </div>
-            </div>
-            <div class="creatorGridColumn">
-                <div class="bottomToolbox">
-                    <button class="toolboxButton js-randomButton">Random</button>
-                    <button class="toolboxButton success js-saveButton">Save</button>
-                </div>
-            </div>
+    <div class="homeContainer">
+        <h1>INFINITE - Sprite Trainer Creator</h1>
+        <h2>Pokémon Trainer Creator is an online free trainer generator for your Pokémon games! Try it out!</h2>
+        
+        <div class="banner" style="background-image: url(images/home/minisprites.png);">
+            <img class="logoImg" src="images/home/logo.png" alt="INFINITE Sprites">
         </div>
-    </div>
 
-    <div class="modal hidden">
-        <div class="modalTitle"></div>
-        <div class="modalBody"></div>
-        <div class="modalFooter">
-            <button class="toolboxButton danger js-closeModal">Close</button>
-            <button class="toolboxButton success js-applyModal">Apply</button>
+        <div class="projectDescription">
+            
+            <p class="title">What is INFINITE?</p>
+            <p>It is an application to help game creators and players themselves create graphics even without having much idea about image editing or pixel art.</p>
+
+            <p class="title">How much does it cost?</p>
+            <p>It is totally FREE, the application does not require any payment, however the maintenance of the website is financed through advertising on this website and direct donations that you can make from here!</p>
         </div>
-        <div class="modalPreview"></div>
+
+        <div class="projectsGrid">
+            <div class="gridElement">
+                <h3><a href="overworld.html">Infinite MiniSprite Creator</a></h3>
+                <a href="overworld.html">
+                    <img src="images/home/ow_creator.png" alt="Infinite MiniSprite Creator banner">
+                </a>
+                <div class="description">
+                    <p>Inifinite MiniSprite Creator is a tool that will help you create your own overworlds for your Pokémon fangames. It has countless options.</p>
+                    <p>Select between different types of clothing, hair, skin and accessories to create your characters in a matter of seconds.</p>
+                    <p>When you finish creating, you can easily insert your creations into your projects created with RPG Maker XP or Unity.</p>
+                </div>
+
+                <a href="overworld.html" class="button">Enter</a>
+            </div>
+
+            <div class="gridElement">
+                <h3><a href="#">Infinite Mugshot Creator</a></h3>
+                <a href="#">
+                    <img src="images/home/mugshot_creator.png" alt="Infinite Mugshot Creator banner">
+                </a>
+
+                <div class="description">
+                    <p>Coming soon...</p>
+                </div>
+            </div>
+
+            <div class="gridElement">
+                <h3><a href="#">Infinite Trainer Creator</a></h3>
+                <a href="#">
+                    <img src="images/home/trainer_creator.png" alt="Infinite Mugshot Creator banner">
+                </a>
+                <div class="description">
+                    <p>Coming soon...</p>
+                </div>
+            </div>
+        </div>
     </div>
 
     <div class="credits">
@@ -89,18 +90,10 @@
             Pokémon Trainer Creator v1.0
         </p>
         <p>
-            Sprites by <a href="https://www.youtube.com/c/Piruminati" target="_blank">Piruminati</a> - Code by <a
+            Sprites by <a href="https://www.youtube.com/c/Piruminati" target="_blank">Piruminati</a> - Developed by <a
                 href="https://twitter.com/JellyMudkip" target="_blank">JellyMudkip</a>
         </p>
     </div>
-
-    <a class="paypal" href="https://www.paypal.com/paypalme/PiruJimenez" target="_blank">
-        <img src="images/icons/paypal.svg" alt="Support the project with a donation"
-            title="Support the project with a donation" width="60" height="19">
-    </a>
-
-    <script src="scripts/js/vendor/merge.js"></script>
-    <script src="scripts/js/script.js" type="module"></script>
 </body>
 
 </html>

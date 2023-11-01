@@ -1,3 +1,8 @@
+/**
+ * Pokémon Infinite Merger
+ * @author Alex 'JellyMudkip'
+*/
+
 let canvas = document.querySelector('.js-mainCanvas');
 let imgPath = './images/bodyParts/';
 let bodyParts = {};
@@ -9,7 +14,7 @@ let animatedTrainers = document.querySelectorAll('.animatedToolbox .animated');
 let gens = [
     "gen3", "gen4", "gen5"
 ];
-let activeGen = 2;
+let activeGenIndex = 2;
 let activeModalBodyParts = [];
 let modalBody = null;
 let clickedElement = [];
@@ -34,7 +39,7 @@ const generateImage = (list = null, done = () => { }) => {
     Object.keys(list).forEach(element => {
         if (keys.includes(element)) {
             if (list[element] !== "") {
-                tempList.push(imgPath + element + "/" + gens[activeGen] + "/" + list[element] + ".png");
+                tempList.push(imgPath + element + "/" + gens[activeGenIndex] + "/" + list[element] + ".png");
             }
         }
     });
@@ -48,11 +53,11 @@ const generateImage = (list = null, done = () => { }) => {
 const randomImageWithValues = () => {
     selectedBodyParts = {
         'gender': selectedBodyParts['gender'],
-        'body': randomValue(bodyParts['body'][gens[activeGen]][selectedBodyParts['gender']]),
-        'pants': randomValue(bodyParts['pants'][gens[activeGen]][selectedBodyParts['gender']]),
-        'shirt': randomValue(bodyParts['shirt'][gens[activeGen]][selectedBodyParts['gender']]),
-        'hair': randomValue(bodyParts['hair'][gens[activeGen]][selectedBodyParts['gender']]),
-        'shoes': randomValue(bodyParts['shoes'][gens[activeGen]][selectedBodyParts['gender']]),
+        'body': randomValue(bodyParts['body'][gens[activeGenIndex]][selectedBodyParts['gender']]),
+        'pants': randomValue(bodyParts['pants'][gens[activeGenIndex]][selectedBodyParts['gender']]),
+        'shirt': randomValue(bodyParts['shirt'][gens[activeGenIndex]][selectedBodyParts['gender']]),
+        'hair': randomValue(bodyParts['hair'][gens[activeGenIndex]][selectedBodyParts['gender']]),
+        'shoes': randomValue(bodyParts['shoes'][gens[activeGenIndex]][selectedBodyParts['gender']]),
     };
 
     generateImage(selectedBodyParts, (b64) => {
@@ -104,7 +109,7 @@ const buttonEvents = () => {
             panel.addEventListener('click', () => {
                 let modalTitle = panel.dataset.modalTitle !== undefined ? panel.dataset.modalTitle : '';
                 let bodyPart = panel.dataset.part !== undefined ? panel.dataset.part.toLowerCase() : '';
-                let data = bodyParts[bodyPart][gens[activeGen]][selectedBodyParts['gender']];
+                let data = bodyParts[bodyPart][gens[activeGenIndex]][selectedBodyParts['gender']];
 
                 openModal(modalTitle, bodyPart, [...data]);
             });
@@ -133,7 +138,7 @@ const buttonEvents = () => {
 
             if (key !== undefined && part !== undefined) {
                 //Check if the selected part exist in the bodyPart
-                let partInArray = bodyParts[key][gens[activeGen]][selectedBodyParts['gender']].includes(part);
+                let partInArray = bodyParts[key][gens[activeGenIndex]][selectedBodyParts['gender']].includes(part);
                 if (partInArray || part == "") {
                     selectedBodyParts[key] = part;
                     generateImage(selectedBodyParts, (b64) => {
@@ -151,9 +156,9 @@ const buttonEvents = () => {
 
     });
     if (genSelector !== null) {
-        genSelector.selectedIndex = activeGen;
+        genSelector.selectedIndex = activeGenIndex;
         genSelector.addEventListener('change', () => {
-            activeGen = gens.includes(gens[genSelector.selectedIndex]) ? genSelector.selectedIndex : 0;
+            activeGenIndex = gens.includes(gens[genSelector.selectedIndex]) ? genSelector.selectedIndex : 0;
             randomImageWithValues();
         });
     }
